@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    username: 'root'
+    password: 'root'
+    url: 'jdbc:mysql://localhost/blog?serverTimezone=Europe/Warsaw&createDatabaseIfNotExist=true'
+  jpa:
+    hibernate:
+      ddl-auto: 'update'
+      show-sql: true
+      format_sql: true
+      use_sql_comments: true
+    properties:
+      hibernate:
+        dialect: 'org.hibernate.dialect.MySQL8Dialect'
+
+app:
+  jwt-secret: 'daf66e01593f61a15b857cf433aae03a005812b31234e149036bcc8dee755dbb'
+  jwt-expiration-milliseconds:  '86400000'
+
+---
+
+spring:
+  profiles: 'test'
+  datasource:
+    username: 'sa'
+    password: ''
+    url: 'jdbc:h2:mem:testdb'
+  jpa:
+    hibernate:
+      ddl-auto: 'create-drop'
+      show-sql: true
+      format_sql: true
+      use_sql_comments: true
+    properties:
+      hibernate:
+        dialect: 'org.hibernate.dialect.H2Dialect'
+
